@@ -26,3 +26,6 @@ pnpm-debug.log*
 .env.*.local
 
 *.tsbuildinfo
+
+# claude code local tooling
+.claude/

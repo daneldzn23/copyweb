@@ -1,0 +1,295 @@
+.banner-highlight-card {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-bg-gn-high);
+  border: 1px solid var(--color-border-medium);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: banner-highlight-card-enter 0.4s ease;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.banner-highlight-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.banner-highlight-card__light {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(560px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 75%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.banner-highlight-card:hover .banner-highlight-card__light,
+.banner-highlight-card:focus-within .banner-highlight-card__light {
+  opacity: 1;
+}
+
+@keyframes banner-highlight-card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-highlight-card {
+    animation: none;
+  }
+}
+
+.banner-highlight-card--open {
+  width: 748px;
+  height: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px 16px 16px;
+  border: 1px solid var(--color-border-status-selected);
+}
+
+.banner-highlight-card--closed {
+  width: 195px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 16px 20px;
+}
+
+.banner-highlight-card__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+}
+
+.banner-highlight-card--color-yellow .banner-highlight-card__bg {
+  background: radial-gradient(circle at top right, #9d8d60, transparent 70%);
+}
+
+.banner-highlight-card--color-purple .banner-highlight-card__bg {
+  background: radial-gradient(circle at top right, #3b229a, transparent 70%);
+}
+
+.banner-highlight-card--color-neutral .banner-highlight-card__bg {
+  background: radial-gradient(circle at top right, #395173, transparent 70%);
+}
+
+.banner-highlight-card--color-orange .banner-highlight-card__bg {
+  background: radial-gradient(circle at top right, #7c3000, transparent 70%);
+}
+
+.banner-highlight-card__thumb {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-medium);
+}
+
+.banner-highlight-card__thumb--open {
+  width: 290px;
+  height: 168px;
+}
+
+.banner-highlight-card__thumb--closed {
+  width: 100%;
+  aspect-ratio: 280 / 160;
+}
+
+.banner-highlight-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-highlight-card__infos {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 0 0;
+  min-height: 0;
+}
+
+.banner-highlight-card--closed .banner-highlight-card__infos {
+  flex: none;
+  min-height: unset;
+}
+
+.banner-highlight-card__infos--open {
+  justify-content: center;
+  height: 100%;
+  padding-left: 8px;
+}
+
+.banner-highlight-card__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.banner-highlight-card__eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f0b429;
+}
+
+.banner-highlight-card__title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--color-label-primary);
+}
+
+.banner-highlight-card__title--open {
+  font-size: 24px;
+  line-height: 29px;
+  width: 280px;
+}
+
+.banner-highlight-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-label-primary);
+}
+
+.banner-highlight-card__rating-count {
+  color: var(--color-label-secondary);
+}
+
+.banner-highlight-card__proof {
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.banner-highlight-card__proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.banner-highlight-card__proof-item--closed {
+  margin-top: 2px;
+}
+
+.banner-highlight-card__proof-label {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  color: var(--color-label-tertiary);
+}
+
+.banner-highlight-card__proof-value {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-label-primary);
+}
+
+.banner-highlight-card__proof-item--closed .banner-highlight-card__proof-value {
+  font-size: 14px;
+}
+
+.banner-highlight-card__proof-value--positive {
+  color: var(--color-label-positive-high);
+}
+
+.banner-highlight-card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.banner-highlight-card__price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+}
+
+.banner-highlight-card__price-label {
+  color: var(--color-label-secondary);
+}
+
+.banner-highlight-card__price-value {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-label-primary);
+}
+
+.banner-highlight-card__price-suffix {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-label-secondary);
+}
+
+.banner-highlight-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  align-self: flex-start;
+  height: 32px;
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-label-brand-secondary);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.banner-highlight-card--closed .banner-highlight-card__cta {
+  align-self: stretch;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.banner-highlight-card__cta--primary {
+  height: 44px;
+  padding: 0 20px;
+  align-self: flex-start;
+  flex-shrink: 0;
+  border: 1px solid #1f72ff;
+  border-radius: 6px;
+  background: linear-gradient(261deg, var(--gradient-brand-a) 0%, var(--gradient-brand-b) 75%);
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.banner-highlight-card__cta--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(39, 153, 250, 0.4);
+}

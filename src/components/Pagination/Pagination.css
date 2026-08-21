@@ -1,0 +1,46 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.pagination__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--color-label-secondary);
+  cursor: pointer;
+}
+
+.pagination__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pagination__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  color: var(--color-label-secondary);
+  cursor: pointer;
+}
+
+.pagination__page--active {
+  border-color: var(--color-border-status-selected);
+  background: rgba(29, 170, 251, 0.1);
+}

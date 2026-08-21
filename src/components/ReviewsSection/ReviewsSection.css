@@ -1,0 +1,119 @@
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.reviews-section__title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-label-primary);
+}
+
+.reviews-section__summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.reviews-section__summary-value {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-label-primary);
+}
+
+.reviews-section__summary-count {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-label-secondary);
+}
+
+.reviews-section__summary-actions {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.reviews-section__filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-label-secondary);
+}
+
+.reviews-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reviews-section__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border-low);
+}
+
+.reviews-section__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.reviews-section__text {
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-label-primary);
+}
+
+.reviews-section__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-label-secondary);
+}
+
+.reviews-section__stars {
+  display: flex;
+}
+
+.reviews-section__stars img {
+  margin-right: -2px;
+}
+
+.reviews-section__star--empty {
+  opacity: 0.15;
+}
+
+.reviews-section__author {
+  color: var(--color-label-primary);
+}
+
+.reviews-section__date {
+  color: var(--color-label-tertiary);
+}
+
+.reviews-section__more {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-label-brand-secondary);
+}
