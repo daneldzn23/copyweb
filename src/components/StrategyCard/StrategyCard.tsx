@@ -5,6 +5,7 @@ import icWaitingList from '../../assets/ic-waitingList.svg';
 import icMonthBadge from '../../assets/ic-monthBadge-colored.svg';
 import icNoReview from '../../assets/ic-noReview.svg';
 import Sparkline from './Sparkline';
+import { pointsToBRL } from './resultValue';
 import './StrategyCard.css';
 
 export type StrategyCardProps = {
@@ -19,7 +20,7 @@ export type StrategyCardProps = {
   strategiesCount?: number;
   operatingSince?: string;
   resultLabel?: string;
-  resultValue?: string;
+  resultPoints?: number;
   price?: string;
   featured?: boolean;
   discountLabel?: string;
@@ -38,7 +39,7 @@ function StrategyCard({
   strategiesCount,
   operatingSince,
   resultLabel = 'Resultado do ano',
-  resultValue,
+  resultPoints,
   price,
   featured,
   discountLabel,
@@ -138,19 +139,22 @@ function StrategyCard({
           <p className="strategy-card__description">{description}</p>
         </div>
 
-        {!waitingList && resultValue && (
+        {!waitingList && resultPoints !== undefined && (
           <div className="strategy-card__chart">
-            <Sparkline seed={`${name}-${planName}-${resultValue}`} resultValue={resultValue} />
+            <Sparkline
+              seed={`${name}-${planName}-${resultPoints}`}
+              resultValue={pointsToBRL(resultPoints, assets)}
+            />
             <div className="strategy-card__result">
               <span className="strategy-card__result-label">{resultLabel}</span>
               <span
                 className={
-                  resultValue.trim().startsWith('-')
+                  resultPoints < 0
                     ? 'strategy-card__result-value strategy-card__result-value--negative'
                     : 'strategy-card__result-value'
                 }
               >
-                {resultValue}
+                {pointsToBRL(resultPoints, assets)}
               </span>
             </div>
           </div>

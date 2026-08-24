@@ -17,7 +17,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 974, wins: 823, losses: 151 },
     strategiesCount: 2,
     operatingSince: 'mar/2025',
-    resultValue: '172.40 pts',
+    resultPoints: 172.40,
     price: 'R$ 272,99',
   },
   {
@@ -29,7 +29,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 475, wins: 323, losses: 152 },
     strategiesCount: 2,
     operatingSince: 'mar/2025',
-    resultValue: '+172.40 pts',
+    resultPoints: 172.40,
     price: 'R$ 2.150,00',
     featured: true,
   },
@@ -42,7 +42,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     ratingCount: 186,
     assets: ['WINFUT'],
     operations: { total: 974, wins: 823, losses: 151 },
-    resultValue: '172.40 pts',
+    resultPoints: 172.40,
     price: 'R$ 272,99',
   },
   {
@@ -54,7 +54,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     ratingCount: 186,
     assets: ['WINFUT'],
     operations: { total: 974, wins: 823, losses: 151 },
-    resultValue: '-25.61 pts',
+    resultPoints: -25.61,
     price: 'R$ 272,99',
   },
   {
@@ -66,7 +66,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 475, wins: 323, losses: 152 },
     strategiesCount: 2,
     operatingSince: 'mar/2025',
-    resultValue: '+172.40 pts',
+    resultPoints: 172.40,
     price: 'R$ 2.150,00',
     discountLabel: '-50%',
   },
@@ -81,7 +81,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 355, wins: 210, losses: 145 },
     strategiesCount: 3,
     operatingSince: 'abr/2023',
-    resultValue: '51.24 pts',
+    resultPoints: 51.24,
     price: 'R$ 155,10',
   },
   {
@@ -103,7 +103,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 612, wins: 401, losses: 211 },
     strategiesCount: 1,
     operatingSince: 'jun/2024',
-    resultValue: '87.15 pts',
+    resultPoints: 87.15,
     price: 'R$ 189,90',
   },
   {
@@ -117,7 +117,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 355, wins: 210, losses: 145 },
     strategiesCount: 3,
     operatingSince: 'abr/2023',
-    resultValue: '-12.34 pts',
+    resultPoints: -12.34,
     price: 'R$ 155,10',
   },
   {
@@ -131,7 +131,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 288, wins: 190, losses: 98 },
     strategiesCount: 2,
     operatingSince: 'jan/2025',
-    resultValue: '204.10 pts',
+    resultPoints: 204.10,
     price: 'R$ 2.150,00',
   },
   {
@@ -143,7 +143,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     ratingCount: 186,
     assets: ['WINFUT'],
     operations: { total: 974, wins: 823, losses: 151 },
-    resultValue: '32.60 pts',
+    resultPoints: 32.60,
     price: 'R$ 272,99',
   },
   {
@@ -157,7 +157,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 421, wins: 260, losses: 161 },
     strategiesCount: 1,
     operatingSince: 'set/2024',
-    resultValue: '-45.90 pts',
+    resultPoints: -45.90,
     price: 'R$ 189,90',
   },
   {
@@ -169,7 +169,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 475, wins: 323, losses: 152 },
     strategiesCount: 2,
     operatingSince: 'mar/2025',
-    resultValue: '+99.20 pts',
+    resultPoints: 99.20,
     price: 'R$ 2.150,00',
     discountLabel: '-30%',
   },
@@ -184,7 +184,7 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 502, wins: 340, losses: 162 },
     strategiesCount: 3,
     operatingSince: 'abr/2023',
-    resultValue: '61.05 pts',
+    resultPoints: 61.05,
     price: 'R$ 155,10',
   },
   {
@@ -198,7 +198,26 @@ export const STRATEGIES: StrategyCardProps[] = [
     operations: { total: 830, wins: 640, losses: 190 },
     strategiesCount: 2,
     operatingSince: 'fev/2024',
-    resultValue: '145.75 pts',
+    resultPoints: 145.75,
     price: 'R$ 272,99',
   },
 ];
+
+export const TOTAL_STRATEGIES_COUNT = 48;
+export const STRATEGIES_PER_PAGE = 15;
+
+// There are only STRATEGIES.length real mock cards, so other pages reuse them in a
+// rotated order (shifted by a step coprime with the list length) to look distinct.
+const ROTATION_STEP = 7;
+
+export function getStrategiesForPage(page: number): StrategyCardProps[] {
+  const start = (page - 1) * STRATEGIES_PER_PAGE;
+  const end = Math.min(start + STRATEGIES_PER_PAGE, TOTAL_STRATEGIES_COUNT);
+  const count = Math.max(0, end - start);
+  const pageOffset = (page - 1) * ROTATION_STEP;
+
+  return Array.from({ length: count }, (_, i) => {
+    const sourceIndex = (start + i + pageOffset) % STRATEGIES.length;
+    return STRATEGIES[sourceIndex];
+  });
+}

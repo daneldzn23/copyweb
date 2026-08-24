@@ -4,6 +4,7 @@ import icStarHalfMini from '../../assets/ic-starHalf-mini-colored.svg';
 import icWaitingList from '../../assets/ic-waitingList.svg';
 import Sparkline from './Sparkline';
 import type { StrategyCardProps } from './StrategyCard';
+import { pointsToBRL } from './resultValue';
 import './StrategyCardGrid.css';
 
 function StrategyCardGrid({
@@ -13,7 +14,7 @@ function StrategyCardGrid({
   rating,
   assets,
   operations,
-  resultValue,
+  resultPoints,
   price,
   featured,
   discountLabel,
@@ -77,10 +78,10 @@ function StrategyCardGrid({
         </div>
       ) : (
         <div className="strategy-card-grid__stats">
-          {resultValue && (
+          {resultPoints !== undefined && (
             <Sparkline
-              seed={`${name}-${planName}-${resultValue}`}
-              resultValue={resultValue}
+              seed={`${name}-${planName}-${resultPoints}`}
+              resultValue={pointsToBRL(resultPoints, assets)}
               className="strategy-card-grid__sparkline"
             />
           )}
@@ -114,17 +115,17 @@ function StrategyCardGrid({
             )}
           </div>
 
-          {resultValue && (
+          {resultPoints !== undefined && (
             <div className="strategy-card-grid__result">
               <span className="strategy-card-grid__result-label">Resultado do Ano</span>
               <span
                 className={
-                  resultValue.trim().startsWith('-')
+                  resultPoints < 0
                     ? 'strategy-card-grid__result-value strategy-card-grid__result-value--negative'
                     : 'strategy-card-grid__result-value'
                 }
               >
-                {resultValue}
+                {pointsToBRL(resultPoints, assets)}
               </span>
             </div>
           )}

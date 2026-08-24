@@ -1,43 +1,21 @@
 import { Fragment } from 'react';
 import './PlansComparisonSection.css';
 
-const PLANS = ['Basic', 'Plus', 'Premium', 'Premium 500', 'Premium 1.000', 'Ultimate'];
+const PLANS = ['Operar sozinho(a)', 'Copy Invest'];
 
 type Row = { label: string; values: (string | boolean)[] };
 type Group = { title: string; rows: Row[] };
 
 const GROUPS: Group[] = [
   {
-    title: 'Recursos inclusos',
+    title: 'Comparativo',
     rows: [
-      { label: 'Lorem ipsum dolor', values: [false, false, true, true, true, true] },
-      { label: 'Consectetur adipiscing', values: [false, false, true, true, true, true] },
-      { label: 'Sed do eiusmod', values: [false, false, true, true, true, true] },
-      { label: 'Ut labore et dolore', values: [false, false, true, true, true, true] },
-    ],
-  },
-  {
-    title: 'Limites',
-    rows: [
-      { label: 'Lorem ipsum¹', values: ['5', '50', '250', '500', '1.000', 'Ilimitado'] },
-      { label: 'Dolor sit amet²', values: ['—', '10', '50', '100', '200', 'Ilimitado'] },
-      {
-        label: 'Consectetur³',
-        values: ['R$ 25.000,00', 'R$ 150.000,00', 'R$ 500.000,00', 'R$ 1.000.000,00', 'R$ 1.500.000,00', 'Ilimitado'],
-      },
-    ],
-  },
-  {
-    title: 'Assinatura',
-    rows: [
-      {
-        label: 'Valor mensal',
-        values: ['R$ 89,90/mês', 'R$ 249,90/mês', 'R$ 389,90/mês', 'R$ 519,90/mês', 'R$ 669,90/mês', 'R$ 2.339,90/mês'],
-      },
-      {
-        label: 'Valor anual',
-        values: ['R$ 62,99/mês', 'R$ 174,99/mês', 'R$ 272,99/mês', 'R$ 363,93/mês', 'R$ 468,93/mês', 'R$ 1.637,93/mês'],
-      },
+      { label: 'Tempo dedicado ao mercado baixo', values: [false, true] },
+      { label: 'Não exige conhecimento técnico', values: [false, true] },
+      { label: 'Risco parametrizado na estratégia', values: [false, true] },
+      { label: 'Acompanhamento se desejar', values: [false, true] },
+      { label: 'Execução automática, na nuvem', values: [false, true] },
+      { label: 'Acesso a múltiplas estratégias', values: [false, true] },
     ],
   },
 ];
@@ -113,11 +91,6 @@ function PlansComparisonSection() {
           </tbody>
         </table>
       </div>
-
-      <p className="plans-comparison__footnote">
-        ¹ Lorem ipsum dolor sit amet consectetur. ² Adipiscing elit sed do eiusmod. ³ Tempor
-        incididunt ut labore et dolore magna aliqua.
-      </p>
     </section>
   );
 }

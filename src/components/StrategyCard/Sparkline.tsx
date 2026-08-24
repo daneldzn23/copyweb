@@ -14,12 +14,14 @@ type Segment = {
 };
 
 function parseTrend(resultValue: string): 'positive' | 'negative' | 'neutral' {
-  const normalized = resultValue.replace(',', '.');
-  const match = normalized.match(/-?\d+(\.\d+)?/);
+  const trimmed = resultValue.trim();
+  if (trimmed.startsWith('-')) return 'negative';
+  if (trimmed.startsWith('+')) return 'positive';
+  const normalized = trimmed.replace(',', '.');
+  const match = normalized.match(/\d+(\.\d+)?/);
   if (!match) return 'neutral';
   const value = parseFloat(match[0]);
   if (value > 0) return 'positive';
-  if (value < 0) return 'negative';
   return 'neutral';
 }
 

@@ -1,0 +1,93 @@
+.nelogica-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 56px 40px;
+  border-top: 2px solid rgba(29, 170, 251, 0.25);
+}
+
+.nelogica-section__headline {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 560px;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--color-label-primary);
+}
+
+.nelogica-section__logo {
+  width: 110px;
+  height: auto;
+  transform: translateY(3px);
+}
+
+.nelogica-section__body {
+  max-width: 480px;
+  margin: 0 0 16px;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-label-secondary);
+}
+
+.nelogica-section__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 840px;
+  margin-top: 8px;
+}
+
+.nelogica-section__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(29, 170, 251, 0.15);
+  background: linear-gradient(0deg, rgba(29, 170, 251, 0.1), rgba(29, 170, 251, 0) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nelogica-section__stat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 340px 260px at 22% 89%, rgba(29, 170, 251, 0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.nelogica-section__stat-divider {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-label-brand-secondary);
+}
+
+.nelogica-section__stat-value {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--color-label-primary);
+}
+
+.nelogica-section__stat-label {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  color: var(--color-label-secondary);
+}

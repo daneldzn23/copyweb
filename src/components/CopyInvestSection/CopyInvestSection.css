@@ -1,0 +1,331 @@
+/* ---------- Tokens: casados com o tema da página ---------- */
+.ci-section {
+  --ci-bg: var(--color-bg-page);
+  --ci-surface: rgba(255, 255, 255, 0.028);
+  --ci-border: var(--color-border-medium);
+  --ci-text: var(--color-label-primary);
+  --ci-muted: var(--color-label-secondary);
+  --ci-accent: #1daafb;
+  --ci-accent-glow: rgba(29, 170, 251, 0.45);
+  --ci-font: inherit;
+  --ci-radius: 18px;
+  --ci-max-w: 1080px;
+}
+
+.ci-section {
+  font-family: var(--ci-font);
+  color: var(--ci-text);
+  padding: 56px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ci-inner {
+  max-width: var(--ci-max-w);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ---------- Cabeçalho ---------- */
+.ci-title {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--color-label-primary);
+  margin: 0 0 4px;
+  text-align: center;
+}
+.ci-subtitle {
+  font-family: var(--font-secondary);
+  color: var(--ci-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 520px;
+  margin: 0 auto clamp(48px, 6vw, 72px);
+  text-align: center;
+}
+
+/* ---------- Fluxo de 3 passos ---------- */
+.ci-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0; /* sem gap: mantém os centros dos nós exatamente em 16.66% / 50% / 83.33% (alinhados ao trilho) */
+}
+
+/* trilho conector (desktop): atravessa os três nós */
+.ci-track {
+  position: absolute;
+  top: 27px; /* alinhado ao centro dos nós */
+  left: calc(16.666%);
+  right: calc(16.666%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--ci-border) 0%, rgba(29, 170, 251, 0.35) 50%, var(--ci-border) 100%);
+  border-radius: 2px;
+}
+
+/* pulso que viaja pelo trilho, a operação sendo replicada */
+.ci-pulse {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ci-accent);
+  box-shadow: 0 0 12px 3px var(--ci-accent-glow);
+  animation: ci-travel 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes ci-travel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  46% {
+    left: 50%;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.ci-step {
+  position: relative;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ci-section.is-visible .ci-step {
+  opacity: 1;
+  transform: none;
+}
+.ci-section.is-visible .ci-step:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.ci-section.is-visible .ci-step:nth-child(3) {
+  transition-delay: 0.24s;
+}
+.ci-section.is-visible .ci-step:nth-child(4) {
+  transition-delay: 0.36s;
+}
+
+.ci-node {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--ci-bg);
+  border: 1px solid var(--ci-border);
+  position: relative;
+  z-index: 1;
+  color: var(--ci-accent);
+}
+.ci-node::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--ci-accent);
+  opacity: 0;
+  animation: ci-node-blink 4.5s infinite;
+}
+.ci-step:nth-child(2) .ci-node::after {
+  animation-delay: 0s;
+}
+.ci-step:nth-child(3) .ci-node::after {
+  animation-delay: 1.9s;
+}
+.ci-step:nth-child(4) .ci-node::after {
+  animation-delay: 4s;
+}
+@keyframes ci-node-blink {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  4% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  16% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+.ci-node svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ci-step-index {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ci-accent);
+  color: #06251c;
+  font-size: 11px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.ci-step h3 {
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+.ci-step p {
+  color: var(--ci-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 240px;
+}
+
+/* ---------- CTA ---------- */
+.ci-loop {
+  position: relative;
+  margin-top: clamp(40px, 5vw, 56px);
+  text-align: center;
+}
+
+.ci-loop-label {
+  margin: 0;
+  color: var(--ci-muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.ci-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  margin-top: 22px;
+  padding: 0 20px;
+  border: 1px solid #1f72ff;
+  border-radius: 6px;
+  background: linear-gradient(261deg, var(--gradient-brand-a) 0%, var(--gradient-brand-b) 75%);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ci-cta:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(39, 153, 250, 0.4);
+}
+.ci-cta:focus-visible {
+  outline: 2px solid var(--ci-accent);
+  outline-offset: 3px;
+}
+
+.ci-availability {
+  margin: 12px 0 0;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--color-label-tertiary);
+}
+
+/* ---------- Mobile: fluxo vertical ---------- */
+@media (max-width: 760px) {
+  .ci-flow {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-left: 8px;
+  }
+  .ci-track {
+    top: 28px;
+    bottom: 28px;
+    left: 35px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--ci-border) 0%, rgba(29, 170, 251, 0.35) 50%, var(--ci-border) 100%);
+  }
+  .ci-pulse {
+    top: 0;
+    left: -3px;
+    animation-name: ci-travel-v;
+  }
+  @keyframes ci-travel-v {
+    0% {
+      top: 0%;
+      opacity: 0;
+    }
+    6% {
+      opacity: 1;
+    }
+    46% {
+      top: 50%;
+    }
+    94% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  .ci-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    grid-template-rows: auto;
+    gap: 4px 18px;
+    text-align: left;
+    align-items: start;
+  }
+  .ci-node {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    margin: 0;
+  }
+  .ci-step h3,
+  .ci-step p {
+    grid-column: 2;
+  }
+  .ci-step p {
+    max-width: none;
+    margin: 0;
+  }
+}
+
+/* ---------- Acessibilidade: reduz movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ci-pulse,
+  .ci-node::after {
+    animation: none;
+  }
+  .ci-pulse {
+    display: none;
+  }
+  .ci-step {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ci-cta {
+    transition: none;
+  }
+}

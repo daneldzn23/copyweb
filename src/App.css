@@ -1,7 +1,6 @@
 .app-body {
   display: flex;
   align-items: flex-start;
-  background: var(--color-bg-page);
 }
 
 .app-page {

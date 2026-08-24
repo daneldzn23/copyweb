@@ -2,10 +2,13 @@ import NavHeader from './components/NavHeader/NavHeader';
 import HeadlineSection from './components/HeadlineSection/HeadlineSection';
 import HeroSection from './components/HeroSection/HeroSection';
 import StrategiesSection from './components/StrategiesSection/StrategiesSection';
-import AutomationIntroSection from './components/AutomationIntroSection/AutomationIntroSection';
-import AutomationToolsSection from './components/AutomationToolsSection/AutomationToolsSection';
-import ReviewsSection from './components/ReviewsSection/ReviewsSection';
-import PlansComparisonSection from './components/PlansComparisonSection/PlansComparisonSection';
+import NelogicaSection from './components/NelogicaSection/NelogicaSection';
+import CopyInvestSection from './components/CopyInvestSection/CopyInvestSection';
+import ActivationVideoSection from './components/ActivationVideoSection/ActivationVideoSection';
+import ComparisonSection from './components/ComparisonSection/ComparisonSection';
+import DiversificationSection from './components/DiversificationSection/DiversificationSection';
+import TestimonialsSection from './components/TestimonialsSection/TestimonialsSection';
+import ClosingCtaSection from './components/ClosingCtaSection/ClosingCtaSection';
 import ProfitAdSection from './components/ProfitAdSection/ProfitAdSection';
 import Footer from './components/Footer/Footer';
 import './App.css';
@@ -19,10 +22,13 @@ function App() {
           <HeadlineSection />
           <HeroSection />
           <StrategiesSection />
-          <AutomationIntroSection />
-          <AutomationToolsSection />
-          <ReviewsSection />
-          <PlansComparisonSection />
+          <NelogicaSection />
+          <CopyInvestSection />
+          <ActivationVideoSection />
+          <ComparisonSection />
+          <DiversificationSection />
+          <TestimonialsSection />
+          <ClosingCtaSection />
           <ProfitAdSection />
         </div>
       </div>
