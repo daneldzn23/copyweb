@@ -92,3 +92,14 @@
   font-size: 13px;
   color: var(--color-label-secondary);
 }
+
+@media (max-width: 640px) {
+  .nelogica-section {
+    padding: 40px 24px;
+  }
+
+  .nelogica-section__stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

@@ -93,3 +93,9 @@
   color: var(--color-label-tertiary);
   text-align: center;
 }
+
+@media (max-width: 640px) {
+  .plans-comparison {
+    padding: 32px 16px 48px;
+  }
+}

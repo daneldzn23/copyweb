@@ -58,3 +58,25 @@
   color: var(--color-label-primary);
   cursor: pointer;
 }
+
+@media (max-width: 860px) {
+  .profit-ad-section {
+    padding: 24px;
+  }
+
+  .profit-ad {
+    height: auto;
+    padding: 32px 24px;
+  }
+
+  .profit-ad__content {
+    width: 100%;
+    max-width: 412px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profit-ad__title {
+    font-size: 20px;
+  }
+}

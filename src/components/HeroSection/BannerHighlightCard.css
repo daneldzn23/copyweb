@@ -67,6 +67,31 @@
   padding: 16px 16px 20px;
 }
 
+@media (max-width: 640px) {
+  .banner-highlight-card--open {
+    width: min(560px, 88vw);
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .banner-highlight-card__thumb--open {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 290 / 168;
+  }
+
+  .banner-highlight-card__title--open {
+    width: auto;
+  }
+
+  .banner-highlight-card--closed {
+    width: 160px;
+  }
+}
+
 .banner-highlight-card__bg {
   position: absolute;
   inset: 0;

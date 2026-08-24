@@ -111,3 +111,18 @@
   background: var(--color-overlay-lower);
   border: 1px solid var(--color-border-low);
 }
+
+@media (max-width: 760px) {
+  .automation-tools {
+    padding: 40px 24px;
+  }
+
+  .automation-tools__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .automation-tools__card--large {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -15,6 +15,7 @@
   font-size: 40px;
   line-height: 1.5;
   color: var(--color-label-primary);
+  text-wrap: balance;
 }
 
 .headline-section__subtitle {
@@ -23,4 +24,18 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-label-secondary);
+}
+
+@media (max-width: 640px) {
+  .headline-section {
+    padding: 96px 24px 40px;
+  }
+
+  .headline-section__title {
+    font-size: 28px;
+  }
+
+  .headline-section__subtitle {
+    font-size: 14px;
+  }
 }

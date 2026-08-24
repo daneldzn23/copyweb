@@ -40,3 +40,9 @@
   border: 0;
   display: block;
 }
+
+@media (max-width: 640px) {
+  .activation-video {
+    padding: 40px 24px;
+  }
+}
