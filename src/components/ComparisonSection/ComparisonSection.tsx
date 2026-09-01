@@ -1,64 +1,58 @@
-import icClose from '../../assets/ic-close.svg';
-import icCheckmark from '../../assets/ic-checkmark.svg';
+import logoCopyInvest from '../../assets/logo-copyinvest.svg';
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 import './ComparisonSection.css';
 
-const ALONE_ITEMS = [
-  'Tempo dedicado ao mercado: alto',
-  'Exige conhecimento técnico',
-  'Gestão de risco manual',
-  'Acompanhamento constante',
-  'Execução exige plataforma aberta e monitoramento',
-  'Depende de uma única estratégia',
-];
-
-const COPY_INVEST_ITEMS = [
-  'Tempo dedicado ao mercado: baixo',
-  'Não exige conhecimento técnico',
-  'Risco parametrizado na estratégia',
-  'Acompanhamento se desejar',
-  'Execução automática, na nuvem',
-  'Acesso a múltiplas estratégias',
+const ROWS = [
+  { label: 'Tempo dedicado ao mercado', alone: 'Alto', copyInvest: 'Baixo' },
+  { label: 'Conhecimento técnico', alone: 'Necessário', copyInvest: 'Não exigido' },
+  { label: 'Gestão de risco', alone: 'Manual', copyInvest: 'Parametrizada na estratégia' },
+  { label: 'Acompanhamento', alone: 'Constante', copyInvest: 'Se desejar' },
+  { label: 'Execução', alone: 'Manual, plataforma sempre aberta', copyInvest: 'Automática, na nuvem' },
+  { label: 'Estratégias', alone: 'Uma por vez', copyInvest: 'Acesso a múltiplas' },
 ];
 
 function ComparisonSection() {
+  const sectionRef = useRevealOnScroll<HTMLElement>();
+
   return (
-    <section className="comparison-section">
+    <section className="comparison-section" ref={sectionRef}>
       <div className="comparison-section__header">
-        <h2 className="comparison-section__title">Copy Invest x operar por conta própria</h2>
+        <h2 className="comparison-section__title">
+          <span className="comparison-section__title-accent">Copy Invest</span> x operar por conta própria
+        </h2>
         <p className="comparison-section__subtitle">
           A diferença não é sobre saber operar. É sobre onde vai o seu tempo.
         </p>
       </div>
 
-      <div className="comparison-section__cards">
-        <div className="comparison-section__card">
-          <h3 className="comparison-section__card-title">Operar sozinho(a)</h3>
-          <ul className="comparison-section__list">
-            {ALONE_ITEMS.map((item) => (
-              <li key={item} className="comparison-section__item">
-                <span className="comparison-section__icon comparison-section__icon--negative">
-                  <img src={icClose} alt="" width={16} height={16} />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="comparison-section__table-wrap">
+        <div className="comparison-section__table" role="table">
+          <span className="comparison-section__panel" aria-hidden="true" />
+          <div className="comparison-section__row comparison-section__row--head" role="row">
+            <span className="comparison-section__cell comparison-section__cell--head-label" role="columnheader">
+              <span className="comparison-section__visually-hidden">Critério</span>
+            </span>
+            <span className="comparison-section__cell comparison-section__cell--head-alone" role="columnheader">
+              Operar sozinho(a)
+            </span>
+            <span className="comparison-section__cell comparison-section__cell--head-copyinvest" role="columnheader">
+              <img src={logoCopyInvest} alt="Copy Invest" width={128} height={27} />
+            </span>
+          </div>
 
-        <div className="comparison-section__card comparison-section__card--highlighted">
-          <h3 className="comparison-section__card-title comparison-section__card-title--highlighted">
-            Copy Invest
-          </h3>
-          <ul className="comparison-section__list">
-            {COPY_INVEST_ITEMS.map((item) => (
-              <li key={item} className="comparison-section__item">
-                <span className="comparison-section__icon comparison-section__icon--positive">
-                  <img src={icCheckmark} alt="" width={16} height={16} />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          {ROWS.map((row) => (
+            <div key={row.label} className="comparison-section__row" role="row">
+              <span className="comparison-section__cell comparison-section__cell--label" role="rowheader">
+                {row.label}
+              </span>
+              <span className="comparison-section__cell comparison-section__cell--alone" role="cell">
+                {row.alone}
+              </span>
+              <span className="comparison-section__cell comparison-section__cell--copyinvest" role="cell">
+                {row.copyInvest}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

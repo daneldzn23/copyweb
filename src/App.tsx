@@ -9,6 +9,7 @@ import ComparisonSection from './components/ComparisonSection/ComparisonSection'
 import DiversificationSection from './components/DiversificationSection/DiversificationSection';
 import TestimonialsSection from './components/TestimonialsSection/TestimonialsSection';
 import ClosingCtaSection from './components/ClosingCtaSection/ClosingCtaSection';
+import FaqSection from './components/FaqSection/FaqSection';
 import ProfitAdSection from './components/ProfitAdSection/ProfitAdSection';
 import Footer from './components/Footer/Footer';
 import './App.css';
@@ -29,6 +30,7 @@ function App() {
           <DiversificationSection />
           <TestimonialsSection />
           <ClosingCtaSection />
+          <FaqSection />
           <ProfitAdSection />
         </div>
       </div>

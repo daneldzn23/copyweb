@@ -181,7 +181,7 @@ function StrategyCard({
                     {operations.total}{' '}
                     <span className="strategy-card__info-detail">
                       (<span className="strategy-card__wins">{operations.wins}</span>/
-                      {operations.losses})
+                      <span className="strategy-card__losses">{operations.losses}</span>)
                     </span>
                   </span>
                 </div>

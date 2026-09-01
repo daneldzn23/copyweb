@@ -288,6 +288,10 @@
   color: var(--color-label-positive-high);
 }
 
+.strategy-card__losses {
+  color: #d35252;
+}
+
 .strategy-card__asset-chips {
   display: flex;
   gap: 4px;

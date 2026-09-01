@@ -204,7 +204,7 @@ export const STRATEGIES: StrategyCardProps[] = [
 ];
 
 export const TOTAL_STRATEGIES_COUNT = 48;
-export const STRATEGIES_PER_PAGE = 15;
+export const STRATEGIES_PER_PAGE = 9;
 
 // There are only STRATEGIES.length real mock cards, so other pages reuse them in a
 // rotated order (shifted by a step coprime with the list length) to look distinct.

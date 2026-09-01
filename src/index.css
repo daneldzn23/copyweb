@@ -81,8 +81,17 @@ button {
   font-family: inherit;
   background: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none;
+}
+
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
 }

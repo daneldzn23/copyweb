@@ -30,8 +30,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%;
-  min-width: 0;
+  max-width: 100%;
   padding: 4px;
   margin: -4px;
   overflow-x: auto;
@@ -98,10 +97,4 @@
 .hero-section__dot--active {
   width: 18px;
   background: var(--color-label-brand-primary);
-}
-
-@media (max-width: 640px) {
-  .hero-section {
-    padding: 16px 12px;
-  }
 }

@@ -94,6 +94,28 @@
   text-decoration: underline;
 }
 
+.footer__legal-notice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__legal-notice-heading {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-label-tertiary);
+}
+
+.footer__legal-notice p {
+  margin: 0;
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-label-tertiary);
+}
+
 @media (max-width: 860px) {
   .footer {
     padding: 64px 40px 48px;

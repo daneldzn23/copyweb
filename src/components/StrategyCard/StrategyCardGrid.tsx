@@ -93,7 +93,7 @@ function StrategyCardGrid({
                   {operations.total}{' '}
                   <span className="strategy-card-grid__stat-detail">
                     (<span className="strategy-card-grid__wins">{operations.wins}</span>/
-                    {operations.losses})
+                    <span className="strategy-card-grid__losses">{operations.losses}</span>)
                   </span>
                 </span>
               )}

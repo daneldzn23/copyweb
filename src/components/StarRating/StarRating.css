@@ -1,0 +1,11 @@
+.star-rating {
+  display: flex;
+}
+
+.star-rating img {
+  margin-right: -2px;
+}
+
+.star-rating__star--empty {
+  opacity: 0.15;
+}

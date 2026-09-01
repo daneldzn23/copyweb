@@ -1,8 +1,11 @@
+import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 import './ActivationVideoSection.css';
 
 function ActivationVideoSection() {
+  const sectionRef = useRevealOnScroll<HTMLElement>();
+
   return (
-    <section className="activation-video">
+    <section className="activation-video" ref={sectionRef}>
       <h2 className="activation-video__title">Veja como ativar na prática</h2>
       <p className="activation-video__subtitle">
         Do primeiro clique à primeira operação replicada.
