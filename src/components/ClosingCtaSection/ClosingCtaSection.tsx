@@ -15,7 +15,13 @@ function ClosingCtaSection() {
         </a>
         <p className="closing-cta-section__support">
           Ainda com dúvidas sobre qual estratégia escolher?{' '}
-          <a href="#">Fale com um especialista no WhatsApp →</a>
+          <a
+            href="https://wa.me/5511936190167?text=Falar%20com%20Consultor%20Copy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fale com um especialista no WhatsApp →
+          </a>
         </p>
       </div>
     </section>
