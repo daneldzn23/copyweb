@@ -71,7 +71,7 @@ function BannerHighlightCard({
               <div className="banner-highlight-card__proof">
                 {resultValue && (
                   <div className="banner-highlight-card__proof-item">
-                    <span className="banner-highlight-card__proof-label">Financeiro Acumulado</span>
+                    <span className="banner-highlight-card__proof-label">Resultado do Ano</span>
                     <span className="banner-highlight-card__proof-value banner-highlight-card__proof-value--positive">
                       {resultValue}
                     </span>
@@ -113,7 +113,7 @@ function BannerHighlightCard({
             <p className="banner-highlight-card__title">{title}</p>
             {resultValue && (
               <div className="banner-highlight-card__proof-item banner-highlight-card__proof-item--closed">
-                <span className="banner-highlight-card__proof-label">Financeiro Acumulado</span>
+                <span className="banner-highlight-card__proof-label">Resultado do Ano</span>
                 <span className="banner-highlight-card__proof-value banner-highlight-card__proof-value--positive">
                   {resultValue}
                 </span>

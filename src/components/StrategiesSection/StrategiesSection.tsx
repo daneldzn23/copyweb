@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import CategoryTabs from '../CategoryTabs/CategoryTabs';
-import SortBar from '../SortBar/SortBar';
 import StrategyCardGrid from '../StrategyCard/StrategyCardGrid';
 import { TOTAL_STRATEGIES_COUNT, STRATEGIES_PER_PAGE, getStrategiesForPage } from '../StrategyCard/strategiesData';
 import Pagination from '../Pagination/Pagination';
@@ -22,13 +21,17 @@ function StrategiesSection() {
     <section className="strategies-section" id="estrategias">
       <div className="strategies-section__inner">
         <CategoryTabs />
-        <SortBar rangeStart={rangeStart} rangeEnd={rangeEnd} total={TOTAL_STRATEGIES_COUNT} />
         <div className="strategies-section__cards">
           {pageStrategies.map((strategy, index) => (
             <StrategyCardGrid key={`${strategy.name}-${page}-${index}`} {...strategy} />
           ))}
         </div>
-        <Pagination page={page} pageCount={PAGE_COUNT} onPageChange={handlePageChange} />
+        <div className="strategies-section__footer">
+          <Pagination page={page} pageCount={PAGE_COUNT} onPageChange={handlePageChange} />
+          <span className="strategies-section__results">
+            Mostrando {rangeStart}–{rangeEnd} de {TOTAL_STRATEGIES_COUNT} estratégias
+          </span>
+        </div>
       </div>
     </section>
   );

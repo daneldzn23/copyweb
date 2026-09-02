@@ -12,6 +12,10 @@ function pointValueForAssets(assets: string[]): number {
   return match ? match.value : 1;
 }
 
+export function pointsToBRLValue(points: number, assets: string[]): number {
+  return points * pointValueForAssets(assets);
+}
+
 function formatBRL(value: number): string {
   const formatted = new Intl.NumberFormat('pt-BR', {
     style: 'currency',

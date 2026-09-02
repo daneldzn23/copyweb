@@ -4,6 +4,7 @@ import imgConnectGainDiscount from '../../assets/image 291-1.png';
 import imgMalka from '../../assets/Image-2.png';
 import imgBitRobos from '../../assets/Image-3.png';
 import type { StrategyCardProps } from './StrategyCard';
+import { pointsToBRLValue } from './resultValue';
 
 export const STRATEGIES: StrategyCardProps[] = [
   {
@@ -206,6 +207,17 @@ export const STRATEGIES: StrategyCardProps[] = [
 export const TOTAL_STRATEGIES_COUNT = 48;
 export const STRATEGIES_PER_PAGE = 9;
 
+// Default order: highest "Resultado do ano" (displayed R$ value) first. Cards without
+// resultPoints (e.g. waiting list) sort to the end.
+function resultValueFor(strategy: StrategyCardProps): number {
+  if (strategy.resultPoints === undefined) return -Infinity;
+  return pointsToBRLValue(strategy.resultPoints, strategy.assets);
+}
+
+const SORTED_STRATEGIES = [...STRATEGIES].sort(
+  (a, b) => resultValueFor(b) - resultValueFor(a)
+);
+
 // There are only STRATEGIES.length real mock cards, so other pages reuse them in a
 // rotated order (shifted by a step coprime with the list length) to look distinct.
 const ROTATION_STEP = 7;
@@ -217,7 +229,7 @@ export function getStrategiesForPage(page: number): StrategyCardProps[] {
   const pageOffset = (page - 1) * ROTATION_STEP;
 
   return Array.from({ length: count }, (_, i) => {
-    const sourceIndex = (start + i + pageOffset) % STRATEGIES.length;
-    return STRATEGIES[sourceIndex];
+    const sourceIndex = (start + i + pageOffset) % SORTED_STRATEGIES.length;
+    return SORTED_STRATEGIES[sourceIndex];
   });
 }
