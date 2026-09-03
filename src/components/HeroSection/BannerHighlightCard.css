@@ -353,10 +353,6 @@
     margin-top: 0;
   }
 
-  .banner-highlight-card__proof-item:nth-child(2) {
-    display: none;
-  }
-
   .banner-highlight-card__footer {
     grid-area: footer;
     margin-top: 0;

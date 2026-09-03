@@ -3,6 +3,10 @@ import './CopyInvestSection.css';
 
 function CopyInvestSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const flowRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const firstNodeRef = useRef<HTMLDivElement>(null);
+  const lastNodeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -29,6 +33,37 @@ function CopyInvestSection() {
     return () => io.disconnect();
   }, []);
 
+  useEffect(() => {
+    const flow = flowRef.current;
+    const track = trackRef.current;
+    const firstNode = firstNodeRef.current;
+    const lastNode = lastNodeRef.current;
+    if (!flow || !track || !firstNode || !lastNode) return;
+
+    const updateTrackSpan = () => {
+      const flowRect = flow.getBoundingClientRect();
+      const firstRect = firstNode.getBoundingClientRect();
+      const lastRect = lastNode.getBoundingClientRect();
+      const firstCenter = firstRect.top - flowRect.top + firstRect.height / 2;
+      const lastCenter = lastRect.top - flowRect.top + lastRect.height / 2;
+      track.style.setProperty('--ci-track-top', `${firstCenter}px`);
+      track.style.setProperty('--ci-track-height', `${lastCenter - firstCenter}px`);
+    };
+
+    updateTrackSpan();
+
+    const ro = new ResizeObserver(updateTrackSpan);
+    ro.observe(flow);
+
+    const steps = flow.querySelectorAll('.ci-step');
+    steps.forEach((step) => step.addEventListener('transitionend', updateTrackSpan));
+
+    return () => {
+      ro.disconnect();
+      steps.forEach((step) => step.removeEventListener('transitionend', updateTrackSpan));
+    };
+  }, []);
+
   return (
     <section className="ci-section" id="como-funciona" aria-labelledby="ci-title" ref={sectionRef}>
       <div className="ci-inner">
@@ -40,13 +75,13 @@ function CopyInvestSection() {
           nada manualmente.
         </p>
 
-        <div className="ci-flow">
-          <div className="ci-track" aria-hidden="true">
+        <div className="ci-flow" ref={flowRef}>
+          <div className="ci-track" aria-hidden="true" ref={trackRef}>
             <span className="ci-pulse" />
           </div>
 
           <div className="ci-step">
-            <div className="ci-node">
+            <div className="ci-node" ref={firstNodeRef}>
               <span className="ci-step-index" aria-hidden="true">
                 1
               </span>
@@ -92,7 +127,7 @@ function CopyInvestSection() {
           </div>
 
           <div className="ci-step">
-            <div className="ci-node">
+            <div className="ci-node" ref={lastNodeRef}>
               <span className="ci-step-index" aria-hidden="true">
                 3
               </span>
