@@ -2,12 +2,42 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .category-tabs {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .category-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 20px;
+    margin: -4px -20px;
+    scrollbar-width: none;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.category-tabs__filter-toggle,
+.category-tabs__divider,
+.category-tabs__item {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .category-tabs__filters {
+    flex-wrap: wrap;
+  }
 }
 
 .category-tabs__filter-toggle {

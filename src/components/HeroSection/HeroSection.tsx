@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type TouchEvent } from 'react';
 import imgNessaTrader from '../../assets/Image-6.png';
 import imgGetProfit from '../../assets/Image-4.png';
 import imgBitRobos from '../../assets/Image-5.png';
@@ -57,12 +57,14 @@ const HIGHLIGHTS = [
 
 const AUTOPLAY_DELAY_MS = 5000;
 const CLOSED_SLOT_COUNT = 3;
+const SWIPE_THRESHOLD_PX = 40;
 
 function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const total = HIGHLIGHTS.length;
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
 
   const goTo = useCallback(
     (index: number) => {
@@ -82,6 +84,22 @@ function HeroSection() {
     };
   }, [activeIndex, isPaused, total, goNext]);
 
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
+    touchStartXRef.current = null;
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX) return;
+    if (deltaX < 0) {
+      goNext();
+    } else {
+      goPrev();
+    }
+  };
+
   const closedSlots = Array.from({ length: Math.min(CLOSED_SLOT_COUNT, total - 1) }, (_, i) => {
     return HIGHLIGHTS[(activeIndex + 1 + i) % total];
   });
@@ -96,7 +114,11 @@ function HeroSection() {
           onFocus={() => setIsPaused(true)}
           onBlur={() => setIsPaused(false)}
         >
-          <div className="hero-section__carousel">
+          <div
+            className="hero-section__carousel"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <BannerHighlightCard
               key={HIGHLIGHTS[activeIndex].title}
               variant="open"
@@ -104,7 +126,12 @@ function HeroSection() {
             />
 
             {closedSlots.map((card) => (
-              <BannerHighlightCard key={card.title} variant="closed" {...card} />
+              <BannerHighlightCard
+                key={card.title}
+                variant="closed"
+                className="hero-section__closed-card"
+                {...card}
+              />
             ))}
           </div>
 

@@ -15,6 +15,7 @@ export type BannerHighlightCardProps = {
   resultValue?: string;
   winRate?: number;
   price?: string;
+  className?: string;
 };
 
 function BannerHighlightCard({
@@ -28,6 +29,7 @@ function BannerHighlightCard({
   resultValue,
   winRate,
   price,
+  className,
 }: BannerHighlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +46,7 @@ function BannerHighlightCard({
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className={`banner-highlight-card banner-highlight-card--${variant} ${colorClassName}`}
+      className={`banner-highlight-card banner-highlight-card--${variant} ${colorClassName}${className ? ` ${className}` : ''}`}
     >
       <span className="banner-highlight-card__light" aria-hidden="true" />
       <div className="banner-highlight-card__bg" aria-hidden="true" />
@@ -68,22 +70,22 @@ function BannerHighlightCard({
                   <span className="banner-highlight-card__rating-count">({ratingCount})</span>
                 </div>
               )}
-              <div className="banner-highlight-card__proof">
-                {resultValue && (
-                  <div className="banner-highlight-card__proof-item">
-                    <span className="banner-highlight-card__proof-label">Resultado do Ano</span>
-                    <span className="banner-highlight-card__proof-value banner-highlight-card__proof-value--positive">
-                      {resultValue}
-                    </span>
-                  </div>
-                )}
-                {winRate !== undefined && (
-                  <div className="banner-highlight-card__proof-item">
-                    <span className="banner-highlight-card__proof-label">Dias com Lucro</span>
-                    <span className="banner-highlight-card__proof-value">{winRate} dias</span>
-                  </div>
-                )}
-              </div>
+            </div>
+            <div className="banner-highlight-card__proof">
+              {resultValue && (
+                <div className="banner-highlight-card__proof-item">
+                  <span className="banner-highlight-card__proof-label">Resultado (12M)</span>
+                  <span className="banner-highlight-card__proof-value banner-highlight-card__proof-value--positive">
+                    {resultValue}
+                  </span>
+                </div>
+              )}
+              {winRate !== undefined && (
+                <div className="banner-highlight-card__proof-item">
+                  <span className="banner-highlight-card__proof-label">Dias com Lucro</span>
+                  <span className="banner-highlight-card__proof-value">{winRate} dias</span>
+                </div>
+              )}
             </div>
             <div className="banner-highlight-card__footer">
               {price && (
@@ -98,6 +100,13 @@ function BannerHighlightCard({
                 Conhecer estratégia
                 <img src={icArrowRightMini} alt="" width={16} height={16} />
               </button>
+              {rating !== undefined && (
+                <div className="banner-highlight-card__rating banner-highlight-card__rating--footer">
+                  <img src={icStarMini} alt="" width={14} height={14} />
+                  <span className="banner-highlight-card__rating-value">{rating}</span>
+                  <span className="banner-highlight-card__rating-count">({ratingCount})</span>
+                </div>
+              )}
             </div>
           </div>
           <div className="banner-highlight-card__thumb banner-highlight-card__thumb--open">
@@ -113,7 +122,7 @@ function BannerHighlightCard({
             <p className="banner-highlight-card__title">{title}</p>
             {resultValue && (
               <div className="banner-highlight-card__proof-item banner-highlight-card__proof-item--closed">
-                <span className="banner-highlight-card__proof-label">Resultado do Ano</span>
+                <span className="banner-highlight-card__proof-label">Resultado (12M)</span>
                 <span className="banner-highlight-card__proof-value banner-highlight-card__proof-value--positive">
                   {resultValue}
                 </span>

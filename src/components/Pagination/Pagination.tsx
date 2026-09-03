@@ -16,10 +16,11 @@ function Pagination({ page, pageCount, onPageChange }: PaginationProps) {
       <button
         className="pagination__nav"
         disabled={page === 1}
+        aria-label="Página anterior"
         onClick={() => onPageChange(Math.max(1, page - 1))}
       >
         <img src={icChevronLeft} alt="" width={16} height={16} />
-        Anterior
+        <span className="pagination__nav-label">Anterior</span>
       </button>
       {pages.map((p) => (
         <button
@@ -33,9 +34,10 @@ function Pagination({ page, pageCount, onPageChange }: PaginationProps) {
       <button
         className="pagination__nav"
         disabled={page === pageCount}
+        aria-label="Próxima página"
         onClick={() => onPageChange(Math.min(pageCount, page + 1))}
       >
-        Próximo
+        <span className="pagination__nav-label">Próximo</span>
         <img src={icChevronRight} alt="" width={16} height={16} />
       </button>
     </nav>

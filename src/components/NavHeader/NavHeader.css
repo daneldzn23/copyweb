@@ -93,3 +93,28 @@
   color: var(--color-label-primary);
   cursor: pointer;
 }
+
+.nav-header__icon-btn--mobile-only {
+  display: none;
+}
+
+@media (max-width: 920px) {
+  .nav-header {
+    gap: 8px;
+    padding: 8px 16px 4px;
+  }
+
+  .nav-header__primary {
+    gap: 16px;
+  }
+
+  .nav-header__tabs--desktop-only,
+  .nav-header__icon-btn--desktop-only,
+  .nav-header__login-btn--desktop-only {
+    display: none;
+  }
+
+  .nav-header__icon-btn--mobile-only {
+    display: flex;
+  }
+}

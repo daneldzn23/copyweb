@@ -117,7 +117,7 @@ function StrategyCardGrid({
 
           {resultPoints !== undefined && (
             <div className="strategy-card-grid__result">
-              <span className="strategy-card-grid__result-label">Resultado do Ano</span>
+              <span className="strategy-card-grid__result-label">Resultado (12M)</span>
               <span
                 className={
                   resultPoints < 0

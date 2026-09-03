@@ -17,11 +17,13 @@
 .strategies-section__cards,
 .strategies-section__footer {
   width: 1224px;
+  max-width: 100%;
 }
 
 .strategies-section__cards {
   display: grid;
-  grid-template-columns: repeat(3, 400px);
+  grid-template-columns: repeat(3, minmax(0, 400px));
+  justify-content: center;
   gap: 12px;
 }
 
@@ -41,4 +43,32 @@
   line-height: 19px;
   color: var(--color-label-secondary);
   white-space: nowrap;
+}
+
+@media (max-width: 1280px) {
+  .strategies-section__cards {
+    grid-template-columns: repeat(2, minmax(0, 400px));
+  }
+}
+
+@media (max-width: 900px) {
+  .strategies-section {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .strategies-section__cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .strategies-section__footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .strategies-section__results {
+    position: static;
+  }
 }

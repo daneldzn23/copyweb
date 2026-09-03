@@ -7,6 +7,12 @@
   border-bottom: 1px solid var(--color-border-medium);
 }
 
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 16px 12px;
+  }
+}
+
 .hero-section__inner {
   display: flex;
   flex-direction: column;
@@ -14,6 +20,7 @@
   justify-content: center;
   max-width: 1544px;
   width: 100%;
+  min-width: 0;
   border-radius: 6px;
 }
 
@@ -24,6 +31,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
+  min-width: 0;
 }
 
 .hero-section__carousel {
@@ -75,6 +83,21 @@
 
 .hero-section__arrow--next {
   right: 20px;
+}
+
+@media (max-width: 780px) {
+  .hero-section__arrow {
+    display: none;
+  }
+
+  .hero-section__carousel {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  .hero-section__closed-card {
+    display: none;
+  }
 }
 
 .hero-section__counter {

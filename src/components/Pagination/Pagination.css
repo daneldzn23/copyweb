@@ -4,6 +4,28 @@
   justify-content: center;
   gap: 8px;
   padding: 8px 0;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 4px;
+  }
+
+  .pagination__nav-label {
+    display: none;
+  }
+
+  .pagination__nav {
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+  }
+
+  .pagination__page {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .pagination__nav {
