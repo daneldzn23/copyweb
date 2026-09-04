@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll';
 import ImagePlaceholder from '../ImagePlaceholder/ImagePlaceholder';
-import imgDesktopJanelas from '../../assets/copy_desk-janelas.webp';
-import imgDesktopJanelas2 from '../../assets/copy_desk-janelas2.webp';
-import imgEstrategias from '../../assets/Copy Invest_ Estratégias Disponíveis - Filtros Default.webp';
-import imgPerformance from '../../assets/Copy Invest_ Performance.webp';
+import imgDiversification1 from '../../assets/copyinvest_diversification_1.webp';
+import imgDiversification2 from '../../assets/copyinvest_diversification_2.webp';
+import imgDiversification3 from '../../assets/copyinvest_diversification_3.webp';
+import imgDiversification4 from '../../assets/copyinvest_diversification_4.webp';
 import './DiversificationSection.css';
 
 const BENEFITS = [
@@ -13,28 +13,28 @@ const BENEFITS = [
     description:
       'Seu capital não fica preso à sorte de uma única decisão. Ao rodar várias estratégias em paralelo, nenhuma aposta isolada define o resultado da carteira.',
     previewLabel: 'Print: comparador de estratégias com várias teses ativas lado a lado',
-    previewImage: imgEstrategias,
+    previewImage: imgDiversification1,
   },
   {
     title: 'Resultados descorrelacionados',
     description:
       'Quando uma estratégia perde, outra pode estar ganhando. Combinar estratégias com comportamentos diferentes suaviza o resultado agregado da carteira.',
     previewLabel: 'Print: relatório de performance com estratégias descorrelacionadas',
-    previewImage: imgDesktopJanelas,
+    previewImage: imgDiversification2,
   },
   {
     title: 'Menos oscilação na carteira',
     description:
       'A carteira como um todo sente menos o soluço de cada estratégia individual, porque as variações tendem a se compensar ao longo do tempo.',
     previewLabel: 'Print: carteira com múltiplas estratégias ativas simultaneamente',
-    previewImage: imgDesktopJanelas2,
+    previewImage: imgDiversification4,
   },
   {
     title: 'Mais consistência no resultado',
     description:
       'Diversificar não elimina risco, mas evita que tudo dependa de uma única aposta — o que tende a deixar o resultado agregado mais consistente mês a mês.',
     previewLabel: 'Print: ranking de estratégias com resultado consolidado',
-    previewImage: imgPerformance,
+    previewImage: imgDiversification3,
   },
 ];
 
