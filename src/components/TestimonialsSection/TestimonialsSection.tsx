@@ -101,7 +101,9 @@ function TestimonialsSection() {
     (direction: 'next' | 'prev') => {
       if (!carouselRef.current) return;
 
-      const scrollAmount = CARD_WIDTH + GAP;
+      const card = carouselRef.current.querySelector<HTMLElement>('.testimonials-section__card');
+      const cardWidth = card ? card.offsetWidth : CARD_WIDTH;
+      const scrollAmount = cardWidth + GAP;
       const newPosition =
         direction === 'next'
           ? Math.min(scrollPosition + scrollAmount, maxScroll)

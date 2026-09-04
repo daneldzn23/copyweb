@@ -34,11 +34,14 @@
   }
 
   .activation-video__col--text {
+    flex: none;
     max-width: none;
     text-align: center;
   }
 
   .activation-video__col--media {
+    flex: none;
+    width: 100%;
     max-width: 560px;
     margin: 0 auto;
   }

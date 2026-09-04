@@ -93,6 +93,7 @@
 
 .testimonials-section__card {
   flex-shrink: 0;
+  box-sizing: border-box;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -103,6 +104,7 @@
   border: 1px solid rgba(29, 170, 251, 0.25);
   background: linear-gradient(155deg, var(--color-bg-gn-high) 0%, var(--color-bg-gn-low) 100%);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
 }
 
 .testimonials-section__card:hover {
@@ -194,11 +196,13 @@
   }
 
   .testimonials-section__carousel-wrapper {
-    padding: 0 24px;
+    padding: 0;
   }
 
   .testimonials-section__carousel {
-    margin: -4px -24px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 24px;
+    margin: -4px 0;
     padding-left: 24px;
     padding-right: 24px;
   }
